@@ -10,10 +10,32 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_07_21_154335) do
+ActiveRecord::Schema.define(version: 2020_07_21_173958) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "cliente_finals", force: :cascade do |t|
+    t.string "name"
+    t.string "nro"
+    t.string "direccion"
+    t.string "email"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "pedidos", force: :cascade do |t|
+    t.string "monto"
+    t.string "cobro"
+    t.string "recibido_por"
+    t.string "status"
+    t.bigint "vendedors_id", null: false
+    t.bigint "cliente_finals_id", null: false
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["cliente_finals_id"], name: "index_pedidos_on_cliente_finals_id"
+    t.index ["vendedors_id"], name: "index_pedidos_on_vendedors_id"
+  end
 
   create_table "users", force: :cascade do |t|
     t.string "email", default: "", null: false
@@ -27,4 +49,15 @@ ActiveRecord::Schema.define(version: 2020_07_21_154335) do
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
+  create_table "vendedors", force: :cascade do |t|
+    t.string "name"
+    t.string "ruc"
+    t.string "nro"
+    t.string "status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  add_foreign_key "pedidos", "cliente_finals", column: "cliente_finals_id"
+  add_foreign_key "pedidos", "vendedors", column: "vendedors_id"
 end
