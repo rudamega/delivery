@@ -14,7 +14,7 @@ const location = () => {
         longitud.value = data["coords"]["longitude"];
         const longitude = data["coords"]["latitude"];
         const latitude = data["coords"]["longitude"];
-        executeMap([longitude, latitude]);
+        executeMap([latitude, longitude]);
       });
     });
     };
