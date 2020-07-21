@@ -6,7 +6,6 @@ class ClienteFinalsController < ApplicationController
 
   def create
     @cliente = ClienteFinal.new(clientes_params)
-    raise
     x = (1..20_900).to_a.sample
     user = User.new(email: @cliente.email, password: "#{@cliente.name}#{x}")
     if user.save
