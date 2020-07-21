@@ -1,13 +1,15 @@
 const location = () => {
-  const emailInput = document.getElementById("emaili");
   if (document.getElementById("location") == null) {
   } else {
+    const latitud = document.getElementById("latitud");
+    const longitud = document.getElementById("longitud");
      document.getElementById("location").addEventListener('click', () => {
       navigator.geolocation.getCurrentPosition((data) => {
         console.log(data);
         console.log(data["coords"]["latitude"]);
         console.log(data["coords"]["longitude"]);
-        emailInput.value = data["coords"]["latitude"];
+        latitud.value = data["coords"]["latitude"];
+        longitud.value = data["coords"]["longitude"];
       });
     });
     };

@@ -5,7 +5,9 @@
       <%= simple_form_for(@cliente) do |f| %>
         <%= f.input :name, label: "Al llegar, por quién preguntamos?"%>
         <%= f.input :nro, label: "Nro de telefono?"%>
-        <%= f.input :direccion, label: "Direccion?",input_html: { id: :emaili} %>
+        <%= f.input :direccion, label: "Direccion?"%>
+        <%= f.input :latitud, label: "Latitud?", input_html: { id: :latitud}%>
+        <%= f.input :longitud, label: "Longitud?", input_html: { id: :longitud} %>
         <%= f.input :email, label: "Email?"%>
         <div class="d-flex justify-content-center">
         <%= f.submit "Guardar lugar de entrega"%>
