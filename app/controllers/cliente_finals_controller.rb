@@ -6,6 +6,7 @@ class ClienteFinalsController < ApplicationController
 
   def create
     @cliente = ClienteFinal.new(clientes_params)
+    raise
     x = (1..20_900).to_a.sample
     user = User.new(email: @cliente.email, password: "#{@cliente.name}#{x}")
     if user.save
@@ -17,6 +18,6 @@ class ClienteFinalsController < ApplicationController
   private
 
   def clientes_params
-    params.require(:cliente_final).permit(:name, :nro, :direccion, :email)
+    params.require(:cliente_final).permit(:name, :nro, :direccion, :email, :latitud, :longitud)
   end
 end
