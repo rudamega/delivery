@@ -1,5 +1,8 @@
 class ClienteFinalsController < ApplicationController
-  skip_before_action :authenticate_user!, only: [:new, :create]
+  skip_before_action :authenticate_user!, only: [:index, :new, :create]
+  def index
+  end
+
   def new
     @cliente = ClienteFinal.new
   end

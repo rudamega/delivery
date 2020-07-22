@@ -1,4 +1,4 @@
-import { executeMap } from './mapboxgl';
+import { initMap } from './google_maps';
 
 const location = () => {
   if (document.getElementById("location") == null) {
@@ -14,7 +14,7 @@ const location = () => {
         longitud.value = data["coords"]["longitude"];
         const longitude = data["coords"]["latitude"];
         const latitude = data["coords"]["longitude"];
-        executeMap([latitude, longitude]);
+        initMap([latitude, longitude]);
       });
     });
     };
